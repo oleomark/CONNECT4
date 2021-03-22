@@ -1,3 +1,28 @@
+#game-name {
+    color: black;
+    font-size: 50px;
+    text-align: center;
+}
+
+#display-header {
+    text-align: center;
+}
+
+#main-button {
+    text-align: center;
+}
 h1 {
-    color: red;
+    color: black;
+    font-size: 50px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: (5, 90px);
+    grid-template-rows: (4, 90px);
+    width: 740px;
+    height: 620px;
+    margin: 0 auto;
+    justify-content: center;
+    background-color: gray;
 }
