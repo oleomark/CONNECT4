@@ -1,28 +1,42 @@
-#game-name {
+
+#central-header{
+    text-align: center;
     color: black;
-    font-size: 50px;
-    text-align: center;
 }
 
-#display-header {
-    text-align: center;
+#display-header{
+    font-size: 40px;
 }
 
-#main-button {
-    text-align: center;
-}
 h1 {
     color: black;
     font-size: 50px;
 }
 
-.grid{
-    display: grid;
-    grid-template-columns: (5, 90px);
-    grid-template-rows: (4, 90px);
-    width: 740px;
-    height: 620px;
+#player-1-display{
+    display: flex;
+    justify-content: flex-start;
+}
+
+table {
     margin: 0 auto;
-    justify-content: center;
+  }
+
+td {
     background-color: gray;
+    height: 150px;
+    width: 150px;
+  }
+
+td div {
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  pointer-events: none;
+  background-color: white;
+}
+
+#player-2-display{
+    display: flex;
 }

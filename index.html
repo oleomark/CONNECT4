@@ -9,40 +9,52 @@
         <script defer src = "script.js"></script>
     </head>
     <body>
-        <main>
+        <section id="central-header">
             <h1 id="game-name">CONNECT 4</h1>
             <h2 id="display-header">Press button to start!</h2>
-            <h2 id="main-button"><button>START GAME</button></h2>
+            <button>START GAME</button>
+        </section>
+        <main>
+            <section id="player-1-display">
                 <h2>PLAYER 1 SCORE</h2>
-                 <h1 id="player-1-score">0</h1>
-                    <h2>PLAYER 2 SCORE</h2>
-                    <h1 id="player-2-score">0</h1>
-
-                <div class ="grid"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-
+                <h1 id="player-1-score"></h1>
+            </section>
+            
+            <table id ="board">
+                <tr class="row1">
+                    <td id="0"class="column-1"><div></div></td>
+                    <td id="1"class="column-2"><div></div></td>
+                    <td id="2"class="column-3"><div></div></td>
+                    <td id="3"class="column-4"><div></div></td>
+                    <td id="4"class="column-5"><div></div></td>
+                </tr>
+                <tr id="row2">
+                    <td id="5"class="column-1"><div></div></td>
+                    <td id="6"class="column-2"><div></div></td>
+                    <td id="7"class="column-3"><div></div></td>
+                    <td id="8"class="column-4"><div></div></td>
+                    <td id="9"class="column-5"><div></div></td>
+                </tr>
+                <tr id="row3">
+                    <td id="10"class="column-1"><div></div></td>
+                    <td id="11"class="column-2"><div></div></td>
+                    <td id="12"class="column-3"><div></div></td>
+                    <td id="13"class="column-4"><div></div></td>
+                    <td id="14"class="column-5"><div></div></td>
+                </tr>
+                <tr id="row4">
+                    <td id="15"class="column-1"><div></div></td>
+                    <td id="16"class="column-2"><div></div></td>
+                    <td id="17"class="column-3"><div></div></td>
+                    <td id="18"class="column-4"><div></div></td>
+                    <td id="19"class="column-5"><div></div></td>
+                </tr>
+            </table>
+            <section id="player-2-display">
+                <h2>PLAYER 2 SCORE</h2>
+                <h1 id="player-2-score"></h1>
+            </section>                    
         </main>
     </body>
-</html>
+    </html>
+    
