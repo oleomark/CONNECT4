@@ -6,7 +6,7 @@ let profiles = {
 }
 const displayMsgs = ["", "Player 1's Turn", "Player 2's Turn", "Player 1 WINS!", "Player 2 WINS!", "DRAW!"]
 let board
-let PlayerOrder = 0;
+let playerOrder = 0;
 // - Winning combination 
 const winningLines = [
     [0, 1, 2, 3],
@@ -30,7 +30,7 @@ const winningLines = [
 
 /*----- app's state (variables) -----*/
 // - The Board's slots (The 20 cells)
-const cells = document.querySelectorAll('#board td');
+let cells = document.querySelector('#board');
 
 
 /*----- cached element references -----*/
@@ -48,6 +48,7 @@ document.querySelector('button').addEventListener('click', initialize);
 //     td[i].addEventListener('click', placeToken)
 //     td[i].addEventListener('mouseover', checkBoard)
 // // }
+
 cells.addEventListener('click', playerTurn);
 cells.addEventListener('mouseover', checkBoard);
 // const cellTaken = document.querySelector("#board td", placeToken);
@@ -64,13 +65,13 @@ function initialize() {
     };
     displayMsg.innerHTML = displayMsgs[1];
     cells = null;
-    PlayerOrder = 1;
+    playerOrder = 1;
     winner = null;
     render();
 }
 
 //Function to change player 
-function playerOrder() {
+function changePlayer() {
     if (playerOrder === 1) {
         displayMsg.innerHTML = displayMsgs[1];
     }else{
@@ -78,20 +79,48 @@ function playerOrder() {
     }
 }
 function playerTurn(cell) {
-    let idx = cells.target.id;
-         if (cells.classList.contains('RedToken' || 'BlueToken') {
-            return; 
+    // console.log(cell.target.tagName)
+    // console.log(cell.target.id)
+    // console.log(cell.target.classList.value)
+    // console.log(cell.target.cellIndex)
+    // console.log(cell.target.parentNode.id)
+    // console.log(cell.target.childNodes[0].classList)
+    // let idx = cell.target.id;
+    // let column = cell.target.cellIndex;
+    if (cell.target.tagName = "TD") {
+        let idClass = cell.target.classList.value;
+        let column = document.querySelectorAll(`.${idClass}`)
+            for (let i = 3; i >= 0; i--) {
+                //if classlist does NOT contain blue or red token, then add blue or red token
+                // to the div starting at whatever element[i]
+                if (column[i].querySelector('div').classList.length === 0) {
+                    console.log("element is empty add in class")
+                    column[i].querySelector('div').classList.add('blueToken')
+                    return;
+                } else {
+                    column[i].querySelector('div').classList.add('redToken')
+                }
+                    // if playerOrder === 1 player 1
+                        /// player 2
+                turn *= -1;
+                console.log(blah[i].querySelector('div').classList)
+            }
+           // If player clicks on column, check lowest parentnode.id get tr AND get id 
+            //  if (cell.target.classList.contains('RedToken' || 'BlueToken')) {
+            //      return; 
+            //     }
+        // "combine" 4 ids of row into 1 column, and check if each id has a div
     }
-        if (playerOrder === 1 && winner === 0) {
-                cells.target.childNodes[0].style.backgroundColor = profiles['p1'][1];
-                cells.classList.add('RedToken')
-        }else if (playerOrder === -1 && winner === 0) {
-                cells.target.childNodes[0].style.backgroundColor = profiles['p2'][1];
-                cells.classList.add('BlueToken')
-        }
-        turn *= -1;
-        winner = checkBoard();
-        render();
+    //     if (playerOrder === 1 && winner === 0) {
+    //             cell.target.childNodes[0].style.backgroundColor = profiles['p1'][1];
+    //             cell.classList.add('RedToken')
+    //     }else if (playerOrder === -1 && winner === 0) {
+    //             cell.target.childNodes[0].style.backgroundColor = profiles['p2'][1];
+    //             cell.classList.add('BlueToken')
+    //     }
+    //     turn *= -1;
+    //     winner = checkBoard();
+    //     render();
 }
 
 // function playerMove(cell) { 
@@ -114,13 +143,14 @@ function playerTurn(cell) {
 
 // function checkWinCondition() 
 // Taking the 4 values of the array and compare
-function checkBoard() {
-    for(let i = 0; i < winningLines.length; i++) {
-        const i1 = td[winningLines[i][0]];
-        const i2 = td[winningLines[i][1]];
-        const i3 = td[winningLines[i][2]];
-        const i4 = td[winningLines[i][3]];
-}
+// function checkBoard() {
+//     for(let i = 0; i < winningLines.length; i++) {
+//         const i1 = td[winningLines[i][0]];
+//         const i2 = td[winningLines[i][1]];
+//         const i3 = td[winningLines[i][2]];
+//         const i4 = td[winningLines[i][3]];
+//     }
+// }
 // //Function to check winning combinations
 
 // function restartGame() 
@@ -137,10 +167,10 @@ function render() {
         mainHeaderEl.textContent = displayMsgs[5];
     }
     scores[winner]++;
-}
+    }
+
 
 initialize();
-
 
 // 1) Upon loading the game it should:
 // 	    1.1) Initialize the state variables
@@ -168,4 +198,3 @@ initialize();
 // ICEBOX STUFF WOULD BE
 // - Different grid sizes
 // - Playing vs the CP
-// 

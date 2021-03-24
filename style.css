@@ -36,6 +36,13 @@ td div {
   pointer-events: none;
   background-color: white;
 }
+.redToken {
+  background-color: red;
+}
+
+.blueToken {
+  background-color: blue;
+}
 
 #player-2-display{
     display: flex;
