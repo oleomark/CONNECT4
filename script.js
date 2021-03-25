@@ -29,8 +29,6 @@ const winningLines = [
     [3, 7, 11, 15],
 ]
 
-document.querySelector('button').addEventListener('click', initialize);
-
 /*----- app's state (variables) -----*/
 // - The Board's slots (The 20 cells)
 let cells = document.querySelector('#board');
@@ -45,19 +43,20 @@ const displayMsg = document.querySelector('#display-header');
 
 /*----- event listeners -----*/
 //      button to start the game
+document.querySelector('button').addEventListener('click', initialize);
 // listener for every cell
 // for (let i = 0; i < td.length; i++) {
     //     td[i].addEventListener('click', placeToken)
     //     td[i].addEventListener('mouseover', checkBoard)
     // // }
     
-    cells.addEventListener('click', playerTurn);
+cells.addEventListener('click', playerTurn);
     // console.log(cells)
     // cells.addEventListener('mouseover', checkBoard);
     // const cellTaken = document.querySelector("#board td", placeToken);
     /*----- functions -----*/
     //Initialize data to start the game
-    function initialize() {
+function initialize() {
         scores = {
             p1ScoreEl: 0,
             p2ScoreEl: 0,
@@ -81,28 +80,26 @@ function playerTurn(cell) {
     if (cell.target.tagName = "TD") {
         let idClass = cell.target.classList.value;
         let column = document.querySelectorAll(`.${idClass}`)
-        for (let i = 3; i >= 0; i--) {
+            for (let i = 3; i >= 0; i--) {
             //if classlist does NOT contain blue or red token, then add blue or red token
             // to the div starting at whatever element[i]
-            if (column[i].querySelector('div').classList.length === 1) {
+                if (column[i].querySelector('div').classList.length === 1) {
                 // console.log("element is empty add in class")
-                if (playerOrder === 1) {
-                    column[i].querySelector('div').classList.add('blueToken');
-                    checkBoard();
-                    playerOrder *= -1;
-                    displayMsg.innerHTML = displayMsgs[2];
-                    break;
-                } else {
-                    column[i].querySelector('div').classList.add('redToken');
-                    checkBoard();
-                    playerOrder *= -1;
-                    displayMsg.innerHTML = displayMsgs[1];
-                    break;
+                    if (playerOrder === 1) {
+                        column[i].querySelector('div').classList.add('blueToken');
+                        playerOrder *= -1;
+                        displayMsg.innerHTML = displayMsgs[2];
+                        break;
+                    } else {
+                        column[i].querySelector('div').classList.add('redToken');
+                        playerOrder *= -1;
+                        displayMsg.innerHTML = displayMsgs[1];
+                        break;
+                    }
                 }
             }
         }
-    }
-    render();
+    checkBoard();
 }
 // If player clicks on column, check lowest parentnode.id get tr AND get id 
 //  if (cell.target.classList.contains('RedToken' || 'BlueToken')) {
@@ -143,6 +140,7 @@ function playerTurn(cell) {
                         // Taking the 4 values of the array and compare
 
  function checkBoard() {
+    divCenter = document.querySelectorAll('.sq');
     for (let i = 0; i < winningLines.length; i++) {
         const line1 = divCenter[winningLines[i][0]];
         const line2 = divCenter[winningLines[i][1]];
@@ -153,13 +151,13 @@ function playerTurn(cell) {
             line2.classList.contains('blueToken') &&
             line3.classList.contains('blueToken') &&
             line4.classList.contains('blueToken')) {
-                    winner = [1];   
+                winner = "1";   
         }else if 
             (line1.classList.contains('redToken')  &&
             line2.classList.contains('redToken')  &&
             line3.classList.contains('redToken')  &&
             line4.classList.contains('redToken')) {
-                    winner = [-1]
+                winner = "-1"
          }
     }
     render();
@@ -178,11 +176,11 @@ function render() {
     p1ScoreEl.textContent = scores.p1;
     p2ScoreEl.textContent = scores.p2;
     if (winner === "1") {
-        mainHeaderEl.textContent = displayMsgs[3];
+        displayMsg.textContent = displayMsgs[3];
     }else if (winner === "-1") {
-        mainHeaderEl.textContent = displayMsgs[4];
+        displayMsg.textContent = displayMsgs[4];
     }else if (winner === "0") {
-        mainHeaderEl.textContent = displayMsgs[5];
+        displayMsg.textContent = displayMsgs[5];
     }
     scores[winner]++;
     }
