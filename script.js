@@ -7,32 +7,35 @@ let profiles = {
 const displayMsgs = ["", "Player 1's Turn", "Player 2's Turn", "Player 1 WINS!", "Player 2 WINS!", "DRAW!"]
 let board
 let playerOrder = 0;
+
 // - Winning combination 
 const winningLines = [
-    // [0, 1, 2, 3],
-    // [1, 2, 3, 4],
-    // [5, 6, 7, 8],
-    // [6, 7, 8, 9],
-    // [10, 11, 12, 13],
-    // [11, 12, 13, 14],
-    // [15, 16, 17, 18],
-    // [16, 17, 18, 19],
+    [0, 1, 2, 3],
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [6, 7, 8, 9],
+    [10, 11, 12, 13],
+    [11, 12, 13, 14],
+    [15, 16, 17, 18],
+    [16, 17, 18, 19],
     [0, 5, 10, 15],
-    // [1, 6, 11, 16],
-    // [2, 7, 12, 17],
-    // [3, 8, 13, 18],
-    // [4, 9, 14, 19],
-    // [0, 6, 12, 18],
-    // [1, 7, 13, 19],
-    // [4, 8, 12, 16],
-    // [3, 7, 11, 15],
+    [1, 6, 11, 16],
+    [2, 7, 12, 17],
+    [3, 8, 13, 18],
+    [4, 9, 14, 19],
+    [0, 6, 12, 18],
+    [1, 7, 13, 19],
+    [4, 8, 12, 16],
+    [3, 7, 11, 15],
 ]
+
+document.querySelector('button').addEventListener('click', initialize);
 
 /*----- app's state (variables) -----*/
 // - The Board's slots (The 20 cells)
 let cells = document.querySelector('#board');
 let divCenter = document.querySelectorAll('.sq');
-console.log(divCenter);
+
 /*----- cached element references -----*/
 // HTML elements that will be manipulated
 const p1ScoreEl = document.querySelector('#player-1-score');
@@ -42,25 +45,23 @@ const displayMsg = document.querySelector('#display-header');
 
 /*----- event listeners -----*/
 //      button to start the game
-document.querySelector('button').addEventListener('click', initialize);
-
 // listener for every cell
 // for (let i = 0; i < td.length; i++) {
-//     td[i].addEventListener('click', placeToken)
-//     td[i].addEventListener('mouseover', checkBoard)
-// // }
-
-cells.addEventListener('click', playerTurn);
-// console.log(cells)
-// cells.addEventListener('mouseover', checkBoard);
-// const cellTaken = document.querySelector("#board td", placeToken);
-/*----- functions -----*/
-//Initialize data to start the game
-function initialize() {
-    scores = {
-        p1ScoreEl: 0,
-        p2ScoreEl: 0,
-    };
+    //     td[i].addEventListener('click', placeToken)
+    //     td[i].addEventListener('mouseover', checkBoard)
+    // // }
+    
+    cells.addEventListener('click', playerTurn);
+    // console.log(cells)
+    // cells.addEventListener('mouseover', checkBoard);
+    // const cellTaken = document.querySelector("#board td", placeToken);
+    /*----- functions -----*/
+    //Initialize data to start the game
+    function initialize() {
+        scores = {
+            p1ScoreEl: 0,
+            p2ScoreEl: 0,
+        };
     displayMsg.innerHTML = displayMsgs[1];
     cells = null;
     playerOrder = 1;
@@ -80,84 +81,85 @@ function playerTurn(cell) {
     if (cell.target.tagName = "TD") {
         let idClass = cell.target.classList.value;
         let column = document.querySelectorAll(`.${idClass}`)
-            for (let i = 3; i >= 0; i--) {
-                //if classlist does NOT contain blue or red token, then add blue or red token
-                // to the div starting at whatever element[i]
-                if (column[i].querySelector('div').classList.length === 1) {
-                    // console.log("element is empty add in class")
-                    if (playerOrder === 1) {
-                        column[i].querySelector('div').classList.add('blueToken');
-                        playerOrder *= -1;
-                        displayMsg.innerHTML = displayMsgs[2];
-                        return;
-                    } else {
-                        column[i].querySelector('div').classList.add('redToken');
-                        playerOrder *= -1;
-                        displayMsg.innerHTML = displayMsgs[1];
-                        return;
-                    }
+        for (let i = 3; i >= 0; i--) {
+            //if classlist does NOT contain blue or red token, then add blue or red token
+            // to the div starting at whatever element[i]
+            if (column[i].querySelector('div').classList.length === 1) {
+                // console.log("element is empty add in class")
+                if (playerOrder === 1) {
+                    column[i].querySelector('div').classList.add('blueToken');
+                    checkBoard();
+                    playerOrder *= -1;
+                    displayMsg.innerHTML = displayMsgs[2];
+                    break;
+                } else {
+                    column[i].querySelector('div').classList.add('redToken');
+                    checkBoard();
+                    playerOrder *= -1;
+                    displayMsg.innerHTML = displayMsgs[1];
+                    break;
                 }
             }
         }
+    }
     render();
 }
-           // If player clicks on column, check lowest parentnode.id get tr AND get id 
-            //  if (cell.target.classList.contains('RedToken' || 'BlueToken')) {
-            //      return; 
-            //     }
-        // "combine" 4 ids of row into 1 column, and check if each id has a div
-    //     if (playerOrder === 1 && winner === 0) {
-    //             cell.target.childNodes[0].style.backgroundColor = profiles['p1'][1];
-    //             cell.classList.add('RedToken')
-    //     }else if (playerOrder === -1 && winner === 0) {
-    //             cell.target.childNodes[0].style.backgroundColor = profiles['p2'][1];
-    //             cell.classList.add('BlueToken')
+// If player clicks on column, check lowest parentnode.id get tr AND get id 
+//  if (cell.target.classList.contains('RedToken' || 'BlueToken')) {
+    //      return; 
     //     }
-    //     turn *= -1;
-    //     winner = checkBoard();
-    //     render();
+    // "combine" 4 ids of row into 1 column, and check if each id has a div
+    //     if (playerOrder === 1 && winner === 0) {
+        //             cell.target.childNodes[0].style.backgroundColor = profiles['p1'][1];
+        //             cell.classList.add('RedToken')
+        //     }else if (playerOrder === -1 && winner === 0) {
+            //             cell.target.childNodes[0].style.backgroundColor = profiles['p2'][1];
+            //             cell.classList.add('BlueToken')
+            //     }
+            //     turn *= -1;
+            //     winner = checkBoard();
+            //     render();
+            
+            
+            // function playerMove(cell) { 
+                //     // console.log(cell)
+                //     // console.log(cell.target.childNodes)
+                //     // console.log(idx)
+                //     // if (turn === 1) {
+                    //         // }else{
+                        //             //     cellChange = cell.target.childNodes[0].style.backgroundColor = "blue";
+                        //             // }
+                        //             // turn *= -1;
+                        //             // winner = getWinner();
+                        //             // render()
+                        //         }
+                        
+                        //Function to fill grid slot with color by players choice
+                        // CHECKING ROW,COLUMNS, IF NOT FILLED, THEN FILL , IF FILLEd PUSH ONTO ROW 3,
+                        //Function to check if that grid slot is taken, return null
+                        // 
+                        
+                        // function checkWinCondition() 
+                        // Taking the 4 values of the array and compare
 
-
-// function playerMove(cell) { 
-//     // console.log(cell)
-//     // console.log(cell.target.childNodes)
-//     // console.log(idx)
-//     // if (turn === 1) {
-//         // }else{
-//             //     cellChange = cell.target.childNodes[0].style.backgroundColor = "blue";
-//             // }
-//             // turn *= -1;
-//             // winner = getWinner();
-//             // render()
-//         }
-
-//Function to fill grid slot with color by players choice
-// CHECKING ROW,COLUMNS, IF NOT FILLED, THEN FILL , IF FILLEd PUSH ONTO ROW 3,
-//Function to check if that grid slot is taken, return null
-// 
-
-// function checkWinCondition() 
-// Taking the 4 values of the array and compare
-function checkBoard() {
+ function checkBoard() {
     for (let i = 0; i < winningLines.length; i++) {
         const line1 = divCenter[winningLines[i][0]];
         const line2 = divCenter[winningLines[i][1]];
         const line3 = divCenter[winningLines[i][2]];
         const line4 = divCenter[winningLines[i][3]];
-        console.log(divCenter.classList)
-    if (line1.classList.contains('blueToken') &&
-    line2.classList.contains('blueToken') &&
-    line3.classList.contains('blueToken') &&
-    line4.classList.contains('blueToken')) {
-        // displayMsg.innerHTML = [3];
-        return winner = [1];
-    }else if 
-        (line1.classList.contains('redToken')  &&
-         line2.classList.contains('redToken')  &&
-         line3.classList.contains('redToken')  &&
-         line4.classList.contains('redToken')) {
-            //  displayMsg.innerHTML = [4];
-            return winner = [-1]
+        // console.log(divCenter.classList)
+        if (line1.classList.contains('blueToken') &&
+            line2.classList.contains('blueToken') &&
+            line3.classList.contains('blueToken') &&
+            line4.classList.contains('blueToken')) {
+                    winner = [1];   
+        }else if 
+            (line1.classList.contains('redToken')  &&
+            line2.classList.contains('redToken')  &&
+            line3.classList.contains('redToken')  &&
+            line4.classList.contains('redToken')) {
+                    winner = [-1]
          }
     }
     render();
@@ -179,7 +181,7 @@ function render() {
         mainHeaderEl.textContent = displayMsgs[3];
     }else if (winner === "-1") {
         mainHeaderEl.textContent = displayMsgs[4];
-    }else if (winner === "DRAW") {
+    }else if (winner === "0") {
         mainHeaderEl.textContent = displayMsgs[5];
     }
     scores[winner]++;
