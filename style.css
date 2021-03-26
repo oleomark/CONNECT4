@@ -6,6 +6,11 @@
 
 #display-header{
     font-size: 40px;
+    padding: 10 10;
+}
+
+#button{
+  margin-bottom: 30px;
 }
 
 h1 {
@@ -13,13 +18,8 @@ h1 {
     font-size: 50px;
 }
 
-#player-1-display{
-    display: flex;
-    justify-content: flex-start;
-}
-
 table {
-    margin: 0 auto;
+    margin: 40px auto;
   }
 
 td {
@@ -42,8 +42,4 @@ td div {
 
 .blueToken {
   background-color: blue;
-}
-
-#player-2-display{
-    display: flex;
 }
