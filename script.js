@@ -1,4 +1,4 @@
-
+//--Constants--//
 const displayMsgs = ["Drop token to start!", "Player 1's Turn", "Player 2's Turn", "Player 1 WINS!", "Player 2 WINS!", "DRAW!"];
 const winningLines = [
     [0, 1, 2, 3],
@@ -20,13 +20,14 @@ const winningLines = [
     [3, 7, 11, 15],
 ];
 
+//--App's States--//
 let playerOrder = 1;
 let winner = null;
 let cells = document.querySelector('#board');
 let divCenter = document.querySelectorAll('.sq');
 let divInner = Array.from(divCenter);
 
-
+//--Cached Element References--//
 let displayMsg = document.querySelector('#display-header'); 
 cells.addEventListener('click', playerTurn);
 document.querySelector("#button").addEventListener("click", () => {
@@ -40,7 +41,7 @@ document.querySelector("#button").addEventListener("click", () => {
             }
 });
 
-
+//--Functions--//
 function initialize() {
     render();
 }
