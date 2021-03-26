@@ -74,7 +74,7 @@ td div {
 
 .glow-on-hover:before {
   content: '';
-  background: linear-gradient(45deg, #F5F4EF, #C8BB9E, #353434, #A2967F, #53524E, #CEC3B2, #DEDBD1);
+  background: linear-gradient(45deg, #333333, #000000, #353434, #A2967F, #53524E, #978870, #000000);
   position: absolute;
   top: -2px;
   left:-2px;
@@ -117,5 +117,4 @@ td div {
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
-}
 }
