@@ -1,10 +1,4 @@
-let profiles = {
-    p1: ['1', "blue"],
-    p2: ['-1', "red"],
-    winner: ['0', "white"]
-};
 
-const displayMsg = document.querySelector('#display-header'); 
 const displayMsgs = ["Drop token to start!", "Player 1's Turn", "Player 2's Turn", "Player 1 WINS!", "Player 2 WINS!", "DRAW!"];
 const winningLines = [
     [0, 1, 2, 3],
@@ -26,27 +20,27 @@ const winningLines = [
     [3, 7, 11, 15],
 ];
 
-/*----- app's state (variables) -----*/
 let playerOrder = 1;
 let winner = null;
 let cells = document.querySelector('#board');
 let divCenter = document.querySelectorAll('.sq');
-let divCenter2 = Array.from(divCenter);
+let divInner = Array.from(divCenter);
 
-/*----- event listeners -----*/
+
+let displayMsg = document.querySelector('#display-header'); 
 cells.addEventListener('click', playerTurn);
 document.querySelector("#button").addEventListener("click", () => {
-            for (let i = 0; i < divCenter2.length; i++) {
-                console.log(divCenter2.length)
-                divCenter2[i].classList.remove('blueToken');
-                divCenter2[i].classList.remove('redToken');
+            for (let i = 0; i < divInner.length; i++) {
+                console.log(divInner.length)
+                divInner[i].classList.remove('blueToken');
+                divInner[i].classList.remove('redToken');
                 winner = null;
                 displayMsg.textContent = displayMsgs[0];
                 playerOrder = 1;
             }
 });
 
-/*----- functions -----*/
+
 function initialize() {
     render();
 }
@@ -75,7 +69,7 @@ function playerTurn(cell) {
 }
 
 function checkBoard() {
-    let tieCheck = divCenter2.every((div) => {
+    let tieCheck = divInner.every((div) => {
         return div.classList.length === 2
       });
     for (let i = 0; i < winningLines.length; i++) {

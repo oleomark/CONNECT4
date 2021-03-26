@@ -1,31 +1,28 @@
-# CONNECT 4 GAME
+# CONNECT 4 
+Connect 4 is a simple two-player game in which the players take turns dropping colored discs from the top into a suspended grid. The original grid size has seven-columns horizontally and six-rows vertically, but as the years passed by, the game has expanded to different board sizes and variants. The pieces simply fall straight down one after the other, occupying the next available space within that column.
 
-## Subsections
+The main objective of the game is to be the first person to form a horizontal, vertical, or diagonal line of four with the player's respective colored discs. As simple as the game is, there are lots of strategies to be played in order to win.
 
-## List
+More details here: https://en.wikipedia.org/wiki/Connect_Four
+## Screenshots
+<img src="https://imgur.com/a/kxb7eTI">
+<img src="https://imgur.com/a/85DtNoQ">
+<img src="https://imgur.com/a/iEN4dra">
 
-CONNECT 4
+## Wireframe
+<img src="https://imgur.com/a/TFkHvH9">
 
-Main screen features:
-- a board that is a 5x4 grid (5 columns down, 4 rows horizontally)
-- Game Start Button
-- 2 Players using different colored circles shown
-with a win counter underneath 
-- Text to show who's turn is it
-- Text to show game result
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+- Visual Studio Code
 
-Features to be tracked:
-- Players selection on grid
-- If selection is filled
-- If board has a winning line
-- If board is full
-- Player win counter
+## PLAY DEMO 
+- https://oleomark.github.io/CONNECT4/
+- Version 1.0 3/26/20
 
-Steps:
-- Start button starts game 
-- Player 1 starts and selects slot 
-- Slot is now filled with Player 1's piece and cannot be played again
-- Player 2 now goes and drops their piece then that slot is filled
-- Players alternate until  the entire board is filled or when a line of 4 (Connect4) is met.
-- The results are then shared: "Player 1 is the winner!", "Player 2 is the winner!", " DRAW!"
-- Start button reappears to restart game
+## FUTURE ENHANCEMENTS
+- Different grid sizes
+- vs COMPUTER mode
+- Visual upgrades
