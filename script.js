@@ -36,12 +36,10 @@ let divCenter2 = Array.from(divCenter);
 /*----- event listeners -----*/
 cells.addEventListener('click', playerTurn);
 document.querySelector("#button").addEventListener("click", () => {
-//     divCenter = document.querySelectorAll('.sq');
-//         let divCenter3 = Array.from(divCenter);
-//         console.log(divCenter3);
-            for (let i = 0; i < divCenter2.div; i++) {
-                divCenter2.classList.remove('blueToken');
-                divCenter2.classList.remove('redToken');
+            for (let i = 0; i < divCenter2.length; i++) {
+                console.log(divCenter2.length)
+                divCenter2[i].classList.remove('blueToken');
+                divCenter2[i].classList.remove('redToken');
                 winner = null;
                 displayMsg.textContent = displayMsgs[0];
                 playerOrder = 1;
@@ -77,8 +75,6 @@ function playerTurn(cell) {
 }
 
 function checkBoard() {
-    // divCenter = document.querySelectorAll('.sq');
-    // let divCenter2 = Array.from(divCenter);
     let tieCheck = divCenter2.every((div) => {
         return div.classList.length === 2
       });
