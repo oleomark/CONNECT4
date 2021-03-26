@@ -5,12 +5,12 @@ The main objective of the game is to be the first person to form a horizontal, v
 
 More details here: https://en.wikipedia.org/wiki/Connect_Four
 ## Screenshots
-<img src="https://imgur.com/a/kxb7eTI">
-<img src="https://imgur.com/a/85DtNoQ">
-<img src="https://imgur.com/a/iEN4dra">
+<img src="https://i.imgur.com/a5Swr2K.png">
+<img src="https://i.imgur.com/M9d4QhL.png">
+<img src="https://i.imgur.com/411PtAe.png">
 
 ## Wireframe
-<img src="https://imgur.com/a/TFkHvH9">
+<img src="https://i.imgur.com/SYv1iMG.png">
 
 ## Technologies Used
 - HTML
