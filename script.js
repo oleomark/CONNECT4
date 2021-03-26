@@ -5,7 +5,7 @@ let profiles = {
     winner: ['0', "white"]
 }
 const displayMsgs = ["", "Player 1's Turn", "Player 2's Turn", "Player 1 WINS!", "Player 2 WINS!", "DRAW!"]
-let board
+// let board = [];
 let playerOrder = 0;
 
 // - Winning combination 
@@ -33,7 +33,11 @@ const winningLines = [
 // - The Board's slots (The 20 cells)
 let cells = document.querySelector('#board');
 let divCenter = document.querySelectorAll('.sq');
+console.log(divCenter);
 
+divCenter.forEach(div => {
+    console.log(div.classList);
+});
 /*----- cached element references -----*/
 // HTML elements that will be manipulated
 const p1ScoreEl = document.querySelector('#player-1-score');
@@ -141,12 +145,19 @@ function playerTurn(cell) {
 
  function checkBoard() {
     divCenter = document.querySelectorAll('.sq');
+    let divCenter2 = Array.from(divCenter);
+    let tieCheck = divCenter2.every((div) => {
+        return div.classList.length === 2
+      });
     for (let i = 0; i < winningLines.length; i++) {
         const line1 = divCenter[winningLines[i][0]];
         const line2 = divCenter[winningLines[i][1]];
         const line3 = divCenter[winningLines[i][2]];
         const line4 = divCenter[winningLines[i][3]];
         // console.log(divCenter.classList)
+        if (tieCheck) {
+            winner = "0";
+        }
         if (line1.classList.contains('blueToken') &&
             line2.classList.contains('blueToken') &&
             line3.classList.contains('blueToken') &&
@@ -157,19 +168,26 @@ function playerTurn(cell) {
             line2.classList.contains('redToken')  &&
             line3.classList.contains('redToken')  &&
             line4.classList.contains('redToken')) {
-                winner = "-1"
-         }
+                winner = "-1";
+            } 
+
     }
     render();
 }
 
+// if (every(divCenter))
 
 //         //return winnning combination whoever has most
 // //Function to check winning combinations
 // check individual cells and count up to 4 and compare to winning lines
 // check rows and columns and diagonals against winning lines.
+// function drawCheck(){
+//     for(let i = 0; i < cells.length; i++) {
+//     }if (divCenter.contains(classList)) 
+// }
 
-// function restartGame() 
+
+// function endGame() 
 // //Function to reset game/clear board
 
 function render() {
